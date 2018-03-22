@@ -35,6 +35,18 @@ namespace CardGames
 		/// <param name="myGame">The details of the game -- mostly top card and scores.</param>
 		private static void DrawGame(Snap myGame)
 		{
+			SwinGame.ClearScreen(Color.White);
+
+			// Draw the top card
+			Card top = myGame.TopCard;
+			if (top != null)
+			{
+				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.RoyalBlue,"GameFont", 0, 20);
+				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.RoyalBlue, "GameFont", 0, 30);
+				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.RoyalBlue, "GameFont", 0, 40);
+				SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), top.CardIndex, 350, 50);
+			}
+			else
 			
 			{
 				SwinGame.DrawText ("No card played yet...", Color.RoyalBlue, 0, 20);
